@@ -1,0 +1,98 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    margin: 0;
+}
+ /* nav section */
+#nav {
+    justify-content: center;
+    background-image: linear-gradient(to right, gray, black);
+}
+
+nav a {
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    font-size: 28px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* search section */
+
+.search {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#search-bar {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    background-color: white;
+}
+
+.form-control {
+    margin-bottom: 5px;
+}
+
+/* weather results section */
+
+#row-1 {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.form-inline {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+#lastSearch {
+    padding-left: 35px;
+    
+}
+
+#weatherCard {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#row5day {
+    padding-bottom: 20px;
+}
+
+#rowCards {
+    justify-content: center;
+}
+
+#cardDisplay {
+    display: none;
+}
+
+.container-fluid {
+    padding-bottom: 70px;
+}
+
+.card {
+    border: none;
+}
+ 
+/* footer section */
+
+footer {
+    text-align: center;
+    clear: both;
+}

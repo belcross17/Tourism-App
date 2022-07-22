@@ -4,14 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="Brayan Arias, Claudy Regis, John Robinson, & Kevin Herrera.">
+    <title>Tourism-App</title>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
+    <!-- Navigation Bar -->
+
+    <nav class="navbar navbar-light bg-primary" id="nav">
+        <a href="index.html"><i class="fa-solid fa-sun"></i>  Dashboard  <i class="fa-solid fa-sun"></i></a>
+    </nav>
+
+    <!-- Container -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row search" id="row1">
+                    Search for a City:
+                </div>
+                <div class="row">
+                    <form class="form-inline my-2 my-sm-0" id="search-bar">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search for a City!" aria-label="Search" id="searchInput">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+                    </form>
+                <div class="row" id="lastSearch">
+                    <div class="card" style="width: 18rem; border: none;" id="buttonsList">
+                        <!-- Buttons of last search goes here -->
+                    </div>
+                </div>
     
+                </div>
+            </div>
 
+            <!-- Weather Card -->
 
+            <div class="col-lg-8" id="allWeather">
+                <div class="row" id="weatherCard">
+                    <div class="card" style="width: 98%;" id="cardDisplay">
 
-    <script src="./assets/js/javascript.js"></script>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <div class="card-body" id="card">
+                                  <h2 class="card-title" id="cityResult"></h2>
+                                  <p class="card-text" id="tempResult"></p>
+                                  <p class="card-text" id="humidityResult"></p>
+                                  <p class="card-text" id="windResult"></p>
+                                  <p class="card-tet" id="UVIndexResult"></p>
+                                </div>
+    
+                            </div>
+                            <div class="col-lg-4" id="mainIcon">
+                                <!-- Main Icon -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 Day Forecast -->
+                <div class="row" id="row5day"></div>
+
+                <div class="row" id="rowCards">
+                    <!-- Cards Goes Here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+      <div class="col-12">
+        <hr class="light" color="gray">
+        <h5 id="CopyR">&copy; Tourism-App</h5>
+    </div>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./assets/js/javascript.js"></script>
+    
 </body>
 </html>
