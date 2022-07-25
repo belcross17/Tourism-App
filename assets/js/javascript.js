@@ -13,8 +13,9 @@ var forecastDate = {};
 var forecastIcon = {};
 var forecastTemp = {};
 var forecastHum = {};
+var forecastWspd = {};
 var today = moment().format('MM' + "/" + 'DD' + '/' + 'YYYY');
-var APIKey = "&units=metric&APPID=c2a625940250e9689564c95583eb14c8";
+var APIKey = "&units=imperial&APPID=c2a625940250e9689564c95583eb14c8";
 var url =  "https://api.openweathermap.org/data/2.5/weather?q=";
 var citiesArray = JSON.parse(localStorage.getItem("Saved City")) || [];
 
@@ -46,7 +47,7 @@ function currentWeather(userInput) {
         var newImgMain = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
         mainIcon.append(newImgMain);
         cityResultText.text(cityInfo + ", " + country + " " + today);
-        tempResultText.text("Temperature: " + temp + " ºC");
+        tempResultText.text("Temperature: " + temp + " ºF");
         humidityResult.text("Humidity: " + humidity + " %");
         windResultText.text("Wind Speed: " + wind + " MPH");
         $.ajax({
@@ -77,7 +78,7 @@ function forecast (userInput) {
     dayForecast.empty();
     rowCards.empty();
     var fore5 = $("<h2>").attr("class", "forecast").text("5-Day Forecast: "); 
-    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=metric&APPID=123babda3bc150d180af748af99ad173";
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&APPID=123babda3bc150d180af748af99ad173";
     $.ajax({
         url: forecastURL,
         method: "GET"
@@ -88,6 +89,7 @@ function forecast (userInput) {
             forecastIcon[i] = response.list[i].weather[0].icon;
             forecastTemp[i] = response.list[i].main.temp; 
             forecastHum[i] = response.list[i].main.humidity;  
+            forecastWspd[i] = response.list[i].wind.speed;
 
             var newCol2 = $("<div>").attr("class", "col-2");
             rowCards.append(newCol2);
@@ -105,11 +107,14 @@ function forecast (userInput) {
             var newImg = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + forecastIcon[i] + "@2x.png");
             newCardBody.append(newImg);
 
-            var newPTemp = $("<p>").attr("class", "card-text").text("Temp: " + Math.floor(forecastTemp[i]) + "ºC");
+            var newPTemp = $("<p>").attr("class", "card-text").text("Temp: " + Math.floor(forecastTemp[i]) + "ºF");
             newCardBody.append(newPTemp);
 
             var newPHum = $("<p>").attr("class", "card-text").text("Humidity: " + forecastHum[i] + " %");
             newCardBody.append(newPHum);
+
+            var newWspd = $("<p>").attr("class", "card-text").text("Wind Speed: " + forecastHum[i] + " MPH");
+            newCardBody.append(newWspd);
 
             dayForecast.append(fore5);
             };
@@ -188,3 +193,16 @@ $(".btn").on("click", function (event){
 // $.ajax(settings).done(function (response) {
 // 	console.log(response);
 // });
+
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+		'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+	}
+};
+
+fetch('https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?currency=AED&locale=en-gb', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
