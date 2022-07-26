@@ -13,128 +13,93 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-
-    <nav class="navbar navbar-light bg-primary" id="nav">
+    <nav class="navbar navbar-light" id="nav">
         <a href="index.html"><i class="fa-solid fa-sun"></i>  Tourism App  <i class="fa-solid fa-sun"></i></a>
     </nav>
-
     <!-- Container -->
-
     <div class="container">
         <div class="notification is-white">
-            <div class="column is-one-half">
+            <!-- Search box -->
+            <div class="column has-background-link-light">
                 <div class="row search" id="row1">
                     Search For a City and Enter Desired Dates:
                 </div>
-                <div class="row">
+                <div class="column">
                     <form class="box is-one-quarter" id="search-bar">
                         <div class="field">
-                            <label for="search">Location:</label>
-                        <input type="search" placeholder="Enter City Here" aria-label="Search" id="searchInput">
-                        <label for="start">Start date:</label>
-
-                        <input type="date" id="start" name="trip-start"
+                            <label class="title is-6" for="search">Location:</label>
+                        <input class="container has-text-centered has-background-link-light" type="search" placeholder="Enter City Here" id="searchInput">
+                        <label class="title is-6" for="start">Start date:</label>
+                        <input class="has-background-link-light" type="date" id="start" name="trip-start"
                                value="2020-07-22"
                                min="2022-01-01" max="2022-12-31">
-                               <label for="end">End date:</label>
-                        <input type="date" id="end" name="trip-end"
+                               <label class="title is-6" for="end">End date:</label>
+                        <input class="has-background-link-light" type="date" id="end" name="trip-end"
                                value="2020-07-22"
                                min="2021-01-01" max="2022-12-31">
-                        <button class="btn button is-info is-active" type="submit"><i>Search</i></button>
+                        <button class="btn button is-info is-active" type="submit" id="clearHistory" name="clearBtn"><i>Search</i></button>
                     </div>
-           
+           <!-- Previous searches sections -->
                     </form>
-                <div class="row" id="lastSearch">
-                    <label class="title is-4">Previous Searches:</label>
-
-                    <div class="box" style="width: 18rem; border: none;" id="buttonsList">
-                     
-                        <!-- Buttons of last search goes here -->
+                    <div class="columns">
+                <div class="column is-half" id="lastSearch">
+                    <label class="title is-6">Previous Searches:</label>
+                    <div class="box" style="width: 25rem; border: none;" id="buttonsList">
                     </div>
-                </div>
-    
-                </div>
-            </div>
-
-            <!-- Weather Card -->
-
-            <div class="column is-8" id="allWeather">
-                <div class="column is-8" id="weatherCard">
-                    <div class="card" style="width: 98%;" id="cardDisplay">
-
-                        <div class="row">
-
-                            <div class="col-lg-6">
-                                <div class="card-body" id="card">
-                                  <h2 class="card-title" id="cityResult"></h2>
-                                  <p class="card-text" id="tempResult"></p>
-                                  <p class="card-text" id="humidityResult"></p>
-                                  <p class="card-text" id="windResult"></p>
-                                  <p class="card-text" id="UVIndexResult"></p>
+                    <button class="button is-info is-active" type="reset" id="clearHistory"><i>Clear History</i></button>
+                    </div>
+                    <div class="column is-half" style="width: 30rem" id="allWeather">
+                        <label class="title is-6">Current Weather:</label>
+                        <div class="field" id="weatherCard">
+                            <div class="card" style="width: 98%;" id="cardDisplay">
+                                <div class="field is-horizontal">
+                                    <div class="field is-horizontal">
+                                        <div class="field" id="card">
+                                          <h2 class="title is-6" id="cityResult"></h2>
+                                          <p class="text" id="tempResult"></p>
+                                          <p class="text" id="humidityResult"></p>
+                                          <p class="text" id="windResult"></p>
+                                          <p class="text" id="UVIndexResult"></p>
+                                        </div>
+                                    </div>
+                                    <div class="card-image" id="mainIcon">
+                                        <!-- Main Icon -->
+                                    </div>
                                 </div>
-    
-                            </div>
-                            <div class="col-lg-4" id="mainIcon">
-                                <!-- Main Icon -->
                             </div>
                         </div>
-                    </div>
                 </div>
-
+            </div>
+            <!-- Weather Card for todays weather-->
                 <!-- 5 Day Forecast -->
-                <div class="row" id="row5day"></div>
-
-                <div class="row" id="rowCards">
+                <div class="field has-text-centered" id="row5day"></div>
+                <div class="field is-horizontal mb-3" id="rowCards">
                     <!-- Cards Goes Here -->
                 </div>
-
-                <div id="hotels">
-                    <!-- hotels go here -->
-                    
-
-
-                </div>
             </div>
-        </div>
+<!--  Hotel section  -->
+<div class="container has-text-centered">
+    <label class="title is-6">Hotels:</label>
+    <div class="field is-horizontal">
+       <div id="hotels">
+       </div>
     </div>
-
-
-
-
-    <!-- Hotels Section -->
-    <div >
-        <div >
-            <div >
-
-                <div >
-
-                    <div class="col-lg-6">
-                        <div class="card-body" id="card">
-                          <h2 class="card-title" id="hotels"></h2>
-                          <p class="card-text" id="starRating"></p>
-                          <p class="card-text" id="humidityResult"></p>
-                          <p class="card-text" id="windResult"></p>
-                          <p class="card-text" id="UVIndexResult"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+</div>
+</div>
+</div>
+<!--  Footer  -->
     <footer>
-      <div class="col-12">
-        <hr class="light" color="gray">
-        <h5 id="CopyR">&copy; Tourism-App</h5>
+      <div class="container">
+        <h5 class="has-background-link-light mb-5" id="CopyR">&copy; Tourism-App</h5>
     </div>
+</div>
+ </div>
     </footer>
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/javascript.js"></script>
-    
 </body>
 </html>

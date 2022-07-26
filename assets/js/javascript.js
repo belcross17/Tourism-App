@@ -180,7 +180,7 @@ $(".btn").on("click", function (event) {
 })
 
 function hotels(hotelId) {
-    // hotelResults.empty();
+    hotelResults.empty();
     const options = {
         method: 'GET',
         headers: {
@@ -198,7 +198,7 @@ function hotels(hotelId) {
             var i = 0;
             while (counter < 5) {
                 if (data?.hotels[i]?.name) {
-                    var hotelDiv = $("<div>")
+                    var hotelDiv = $("<div>").attr("class", "hotels")
                     var hotel = $("<p>").attr("class", "card-text")
                     hotel.text(data?.hotels[i]?.name);
                     hotelDiv.append(hotel);
