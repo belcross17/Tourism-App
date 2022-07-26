@@ -135,14 +135,13 @@ function storeData (userInput) {
 	}
 
 	localStorage.setItem("Saved City", JSON.stringify(citiesArray));
-    $panel-margin;
 
 }
 
 function lastSearch () {
     buttonList.empty()
     for (var i = 0; i < citiesArray.length; i ++) {
-        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary btn-lg btn-block");
+        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary button is-active button is-info is-rounded is-outlined has-background-link-light is-fullwidth");
         newButton.attr("data-name", citiesArray[i])
         newButton.text(citiesArray[i]);
         buttonList.prepend(newButton);

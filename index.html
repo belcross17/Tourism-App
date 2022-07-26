@@ -14,7 +14,7 @@
 <body>
     <!-- Navigation Bar -->
 
-    <nav class="navbar navbar-light bg-primary" id="nav">
+    <nav class="navbar navbar-light" id="nav">
         <a href="index.html"><i class="fa-solid fa-sun"></i>  Tourism App  <i class="fa-solid fa-sun"></i></a>
     </nav>
 
@@ -22,41 +22,42 @@
 
     <div class="container">
         <div class="notification is-white">
-            <div class="column is-one-half">
+            <!-- Search box -->
+            <div class="column is-one-half has-background-link-light">
                 <div class="row search" id="row1">
                     Search For a City and Enter Desired Dates:
                 </div>
-                <div class="row">
+                <div class="column">
                     <form class="box is-one-quarter" id="search-bar">
                         <div class="field">
-                            <label for="search">Location:</label>
-                        <input type="search" placeholder="Enter City Here" aria-label="Search" id="searchInput">
-                        <label for="start">Start date:</label>
+                            <label class="title is-6" for="search">Location:</label>
+                        <input class="container has-text-centered has-background-link-light" type="search" placeholder="Enter City Here" id="searchInput">
+                        <label class="title is-6" for="start">Start date:</label>
 
-                        <input type="date" id="start" name="trip-start"
+                        <input class="has-background-link-light" type="date" id="start" name="trip-start"
                                value="2020-07-22"
                                min="2022-01-01" max="2022-12-31">
-                               <label for="end">End date:</label>
-                        <input type="date" id="end" name="trip-end"
+                               <label class="title is-6" for="end">End date:</label>
+                        <input class="has-background-link-light" type="date" id="end" name="trip-end"
                                value="2020-07-22"
                                min="2021-01-01" max="2022-12-31">
                         <button class="btn button is-info is-active" type="submit"><i>Search</i></button>
                     </div>
-           
+           <!-- Previous searches sections -->
                     </form>
                 <div class="row" id="lastSearch">
-                    <label class="title is-4">Previous Searches:</label>
+                    <label class="title is-6">Previous Searches:</label>
 
                     <div class="box" style="width: 18rem; border: none;" id="buttonsList">
-                     
-                        <!-- Buttons of last search goes here -->
+              
+                    
                     </div>
                 </div>
     
                 </div>
-            </div>
+            
 
-            <!-- Weather Card -->
+            <!-- Weather Card for todays weather-->
 
             <div class="column is-8" id="allWeather">
                 <div class="column is-8" id="weatherCard">
@@ -95,6 +96,7 @@
         <hr class="light" color="gray">
         <h5 id="CopyR">&copy; Tourism-App</h5>
     </div>
+</div>
     </footer>
 
     <!-- JavaScript Bundle with Popper -->

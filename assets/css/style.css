@@ -23,7 +23,9 @@ nav a:hover {
 }
 
 /* search section */
-
+.field{
+    border-color: black;
+}
 .search {
     display: flex;
     flex-direction: column;
@@ -74,10 +76,6 @@ nav a:hover {
     
 }
 
-.buttonsList{
-
-    padding-left: 35px;
-}
 
 #weatherCard {
     padding-top: 20px;
@@ -110,3 +108,4 @@ footer {
     text-align: center;
     clear: both;
 }
+
