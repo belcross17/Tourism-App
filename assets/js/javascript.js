@@ -9,6 +9,7 @@ var dayForecast = $("#row5day");
 var cardDisplay = $("#cardDisplay");
 var UVIndexText = $("#UVIndexResult");
 var buttonList = $("#buttonsList");
+var clearHistory = $("#clearHistory");
 var forecastDate = {};
 var forecastIcon = {};
 var forecastTemp = {};
@@ -76,7 +77,7 @@ function currentWeather(userInput) {
 function forecast (userInput) {
     dayForecast.empty();
     rowCards.empty();
-    var fore5 = $("<h2>").attr("class", "forecast").text("5-Day Forecast: "); 
+    var fore5 = $("<h2>").attr("class", "forecast","title is-6").text("5-Day Forecast: "); 
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=metric&APPID=123babda3bc150d180af748af99ad173";
     $.ajax({
         url: forecastURL,
@@ -92,7 +93,7 @@ function forecast (userInput) {
             var newCol2 = $("<div>").attr("class", "col-2");
             rowCards.append(newCol2);
 
-            var newDivCard = $("<div>").attr("class", "card text-white bg-primary mb-3");
+            var newDivCard = $("<div>").attr("class", "card text-white mb-3 has-text-centered is-grouped");
             newDivCard.attr("style", "max-width: 18rem;")
             newCol2.append(newDivCard);
 
@@ -155,10 +156,13 @@ function lastSearch () {
 
 }
 
+
+
+
 $(".btn").on("click", function (event){
     event.preventDefault();
     if ($("#searchInput").val() === "") {
-    alert("Please type a userInput to know the current weather");
+    alert("Please type a location to find results");
     } else
     var userInput = $("#searchInput").val().trim().toLowerCase();
     currentWeather(userInput);

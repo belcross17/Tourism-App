@@ -23,7 +23,8 @@
     <div class="container">
         <div class="notification is-white">
             <!-- Search box -->
-            <div class="column is-one-half has-background-link-light">
+            
+            <div class="column has-background-link-light">
                 <div class="row search" id="row1">
                     Search For a City and Enter Desired Dates:
                 </div>
@@ -41,62 +42,97 @@
                         <input class="has-background-link-light" type="date" id="end" name="trip-end"
                                value="2020-07-22"
                                min="2021-01-01" max="2022-12-31">
-                        <button class="btn button is-info is-active" type="submit"><i>Search</i></button>
+                        <button class="btn button is-info is-active" type="submit" id="clearHistory" name="clearBtn"><i>Search</i></button>
                     </div>
            <!-- Previous searches sections -->
                     </form>
-                <div class="row" id="lastSearch">
+                    <div class="columns">
+                <div class="column is-half" id="lastSearch">
                     <label class="title is-6">Previous Searches:</label>
+            
 
-                    <div class="box" style="width: 18rem; border: none;" id="buttonsList">
-              
+                    <div class="box" style="width: 25rem; border: none;" id="buttonsList">
+                        
+                  
                     
                     </div>
+                    <button class="button is-info is-active" type="reset" id="clearHistory"><i>Clear History</i></button>
+                    </div>
+                    
+                    <div class="column is-half" style="width: 30rem" id="allWeather">
+                        <label class="title is-6">Current Weather:</label>
+                        <div class="field" id="weatherCard">
+                            <div class="card" style="width: 98%;" id="cardDisplay">
+                            
+                                <div class="field is-horizontal">
+        
+                                    <div class="field is-horizontal">
+                                        <div class="field" id="card">
+                                          <h2 class="title is-6" id="cityResult"></h2>
+                                          <p class="text" id="tempResult"></p>
+                                          <p class="text" id="humidityResult"></p>
+                                          <p class="text" id="windResult"></p>
+                                          <p class="text" id="UVIndexResult"></p>
+                                        </div>
+            
+                                    </div>
+                                    <div class="card-image" id="mainIcon">
+                                        <!-- Main Icon -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-    
-                </div>
+            </div>
+               
             
 
             <!-- Weather Card for todays weather-->
+            
 
-            <div class="column is-8" id="allWeather">
-                <div class="column is-8" id="weatherCard">
-                    <div class="card" style="width: 98%;" id="cardDisplay">
-
-                        <div class="row">
-
-                            <div class="col-lg-6">
-                                <div class="card-body" id="card">
-                                  <h2 class="card-title" id="cityResult"></h2>
-                                  <p class="card-text" id="tempResult"></p>
-                                  <p class="card-text" id="humidityResult"></p>
-                                  <p class="card-text" id="windResult"></p>
-                                  <p class="card-tet" id="UVIndexResult"></p>
-                                </div>
-    
-                            </div>
-                            <div class="col-lg-4" id="mainIcon">
-                                <!-- Main Icon -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- 5 Day Forecast -->
-                <div class="row" id="row5day"></div>
+                <div class="field has-text-centered" id="row5day"></div>
 
-                <div class="row" id="rowCards">
+                <div class="field is-horizontal mb-3" id="rowCards">
                     <!-- Cards Goes Here -->
                 </div>
             </div>
-        </div>
+       
+    
+
+<!--  Hotel section  -->
+
+<div class="container has-text-centered" id="hotels">
+    
+    <label class="title is-6">Hotels:</label>
+    <div class="field is-horizontal">
+
+        <div class="field" id="card">
+            <h2 class="title is-6" id="hotelName"></h2>
+            <p class="text" id="hotelStars"></p>
+            
+          </div>
+
+
+
     </div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
     <footer>
       <div class="col-12">
         <hr class="light" color="gray">
         <h5 id="CopyR">&copy; Tourism-App</h5>
     </div>
 </div>
+ </div>
     </footer>
 
     <!-- JavaScript Bundle with Popper -->
