@@ -203,10 +203,13 @@ function hotels(hotelId) {
                     hotel.text(data?.hotels[i]?.name);
                     hotelDiv.append(hotel);
                     var starRating = $("<p>").attr("class", "card-text")
-                    starRating.text(data?.hotels[i]?.starRating);
+                    starRating.text("Star Rating: " + data?.hotels[i]?.starRating + " out of 5 starts");
                     var hotelImg = $("<img>").attr("src", (data?.hotels[i]?.thumbnailUrl))
+                    var hotelPrice = $("<p>").attr("class", "card-text");
+                    hotelPrice.text("Min Price: $" + data?.hotels[i]?.ratesSummary.minPrice + " Dollars")
                     hotelDiv.append(hotelImg);
                     hotelDiv.append(starRating);
+                    hotelDiv.append(hotelPrice);
                     hotelResults.append(hotelDiv);
 
                     counter++;
