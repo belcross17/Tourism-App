@@ -23,9 +23,7 @@ nav a:hover {
 }
 
 /* search section */
-.field{
-    border-color: black;
-}
+
 .search {
     display: flex;
     flex-direction: column;
@@ -88,6 +86,7 @@ nav a:hover {
 
 #rowCards {
     justify-content: center;
+    margin: 10px;
 }
 
 #cardDisplay {

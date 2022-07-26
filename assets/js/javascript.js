@@ -90,14 +90,14 @@ function forecast (userInput) {
             forecastTemp[i] = response.list[i].main.temp; 
             forecastHum[i] = response.list[i].main.humidity;  
 
-            var newCol2 = $("<div>").attr("class", "col-2");
+            var newCol2 = $("<div>").attr("class", "mx-3");
             rowCards.append(newCol2);
 
-            var newDivCard = $("<div>").attr("class", "card text-white mb-3 has-text-centered is-grouped");
+            var newDivCard = $("<div>").attr("class", "card text-white mb-3 has-text-centered is-grouped mx-10");
             newDivCard.attr("style", "max-width: 18rem;")
             newCol2.append(newDivCard);
 
-            var newCardBody = $("<div>").attr("class", "card-body");
+            var newCardBody = $("<div>").attr("class", "p-2", "card-body");
             newDivCard.append(newCardBody);
 
             var newH5 = $("<h5>").attr("class", "card-title").text(moment(forecastDate[i]).format("MMM Do"));
@@ -139,10 +139,12 @@ function storeData (userInput) {
 
 }
 
+
+
 function lastSearch () {
     buttonList.empty()
     for (var i = 0; i < citiesArray.length; i ++) {
-        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary button is-active button is-info is-rounded is-outlined has-background-link-light is-fullwidth");
+        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary button is-active button is-info is-rounded is-outlined has-background-link-light is-fullwidth my-1");
         newButton.attr("data-name", citiesArray[i])
         newButton.text(citiesArray[i]);
         buttonList.prepend(newButton);
