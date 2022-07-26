@@ -24,13 +24,22 @@
         <div class="notification is-white">
             <div class="column is-one-half">
                 <div class="row search" id="row1">
-                    Search for a City:
+                    Search For a City and Enter Desired Dates:
                 </div>
                 <div class="row">
                     <form class="box is-one-quarter" id="search-bar">
                         <div class="field">
-                  
+                            <label for="search">Location:</label>
                         <input type="search" placeholder="Enter City Here" aria-label="Search" id="searchInput">
+                        <label for="start">Start date:</label>
+
+                        <input type="date" id="start" name="trip-start"
+                               value="2020-07-22"
+                               min="2022-01-01" max="2022-12-31">
+                               <label for="end">End date:</label>
+                        <input type="date" id="end" name="trip-end"
+                               value="2020-07-22"
+                               min="2021-01-01" max="2022-12-31">
                         <button class="btn button is-info is-active" type="submit"><i>Search</i></button>
                     </div>
            
