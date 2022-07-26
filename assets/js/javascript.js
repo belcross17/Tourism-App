@@ -144,6 +144,7 @@ function storeData (userInput) {
 	}
 
 	localStorage.setItem("Saved City", JSON.stringify(citiesArray));
+    $panel-margin;
 
 }
 

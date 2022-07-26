@@ -9,30 +9,46 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
     <!-- Navigation Bar -->
 
     <nav class="navbar navbar-light bg-primary" id="nav">
-        <a href="index.html"><i class="fa-solid fa-sun"></i>  Dashboard  <i class="fa-solid fa-sun"></i></a>
+        <a href="index.html"><i class="fa-solid fa-sun"></i>  Tourism App  <i class="fa-solid fa-sun"></i></a>
     </nav>
 
     <!-- Container -->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4">
+    <div class="container">
+        <div class="notification is-white">
+            <div class="column is-one-half">
                 <div class="row search" id="row1">
-                    Search for a City:
+                    Search For a City and Enter Desired Dates:
                 </div>
                 <div class="row">
-                    <form class="form-inline my-2 my-sm-0" id="search-bar">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for a City!" aria-label="Search" id="searchInput">
-                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+                    <form class="box is-one-quarter" id="search-bar">
+                        <div class="field">
+                            <label for="search">Location:</label>
+                        <input type="search" placeholder="Enter City Here" aria-label="Search" id="searchInput">
+                        <label for="start">Start date:</label>
+
+                        <input type="date" id="start" name="trip-start"
+                               value="2020-07-22"
+                               min="2022-01-01" max="2022-12-31">
+                               <label for="end">End date:</label>
+                        <input type="date" id="end" name="trip-end"
+                               value="2020-07-22"
+                               min="2021-01-01" max="2022-12-31">
+                        <button class="btn button is-info is-active" type="submit"><i>Search</i></button>
+                    </div>
+           
                     </form>
                 <div class="row" id="lastSearch">
-                    <div class="card" style="width: 18rem; border: none;" id="buttonsList">
+                    <label class="title is-4">Previous Searches:</label>
+
+                    <div class="box" style="width: 18rem; border: none;" id="buttonsList">
+                     
                         <!-- Buttons of last search goes here -->
                     </div>
                 </div>
@@ -42,8 +58,8 @@
 
             <!-- Weather Card -->
 
-            <div class="col-lg-8" id="allWeather">
-                <div class="row" id="weatherCard">
+            <div class="column is-8" id="allWeather">
+                <div class="column is-8" id="weatherCard">
                     <div class="card" style="width: 98%;" id="cardDisplay">
 
                         <div class="row">
@@ -111,7 +127,6 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="./assets/js/javascript.js"></script>
     
 </body>
