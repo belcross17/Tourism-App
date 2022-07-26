@@ -6,15 +6,16 @@
  /* nav section */
 #nav {
     justify-content: center;
-    background-image: linear-gradient(to right, gray, black);
+    background-color: skyblue;
 }
 
 nav a {
     font-weight: bold;
-    color: white;
-    padding: 10px;
+
+    padding: 20px;
     font-size: 28px;
     text-decoration: none;
+    align-items: center;
 }
 
 nav a:hover {
@@ -28,12 +29,18 @@ nav a:hover {
     flex-direction: column;
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+    border-color: black;
+    
 }
 
 #search-bar {
     display: flex;
     flex-direction: column;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-color: black;
+    
 }
 
 .container-fluid {
@@ -53,6 +60,7 @@ nav a:hover {
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 10px;
+
 }
 
 .form-inline {
@@ -63,6 +71,12 @@ nav a:hover {
 #lastSearch {
     padding-left: 35px;
     
+    
+}
+
+.buttonsList{
+
+    padding-left: 35px;
 }
 
 #weatherCard {
