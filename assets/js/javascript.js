@@ -1,11 +1,10 @@
 // global var
 var cityResultText = $("#cityResult");
-var hotelResultsText= $("#hotels");
-var starRatingText = $("#starRating");
+var hotelResults = $("#hotels");
 var tempResultText = $("#tempResult");
 var humidityResult = $("#humidityResult");
 var windResultText = $("#windResult");
-var mainIcon =$("#mainIcon");
+var mainIcon = $("#mainIcon");
 var rowCards = $("#rowCards");
 var dayForecast = $("#row5day");
 var cardDisplay = $("#cardDisplay");
@@ -18,17 +17,17 @@ var forecastHum = {};
 var forecastWspd = {};
 var today = moment().format('MM' + "/" + 'DD' + '/' + 'YYYY');
 var APIKey = "&units=imperial&APPID=c2a625940250e9689564c95583eb14c8";
-var url =  "https://api.openweathermap.org/data/2.5/weather?q=";
+var url = "https://api.openweathermap.org/data/2.5/weather?q=";
 var citiesArray = JSON.parse(localStorage.getItem("Saved City")) || [];
 
 
-$(document).ready(function (){
+$(document).ready(function () {
     var userInput = citiesArray[citiesArray.length - 1];
     currentWeather(userInput);
     forecast(userInput);
     hotels(userInput);
     requestId(userInput);
-    lastSearch ();
+    lastSearch();
 
 });
 
@@ -38,9 +37,9 @@ function currentWeather(userInput) {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(function(response){
+    }).then(function (response) {
         var cityInfo = response.name;
-        var country = response.sys.country; 
+        var country = response.sys.country;
         var temp = response.main.temp;
         var humidity = response.main.humidity;
         var wind = response.wind.speed;
@@ -57,7 +56,7 @@ function currentWeather(userInput) {
         $.ajax({
             url: UVindexURL,
             method: "GET"
-        }).then(function(uvIndex){
+        }).then(function (uvIndex) {
             var UV = uvIndex.value;
             var colorUV;
             if (UV <= 3) {
@@ -74,25 +73,25 @@ function currentWeather(userInput) {
             UVResultText.append($("<span>").attr("class", "uvindex").attr("style", ("background-color: " + colorUV)).text(UV))
             UVIndexText.append(UVResultText);
             cardDisplay.attr("style", "display: flex; width: 98%");
-        })    
+        })
     })
-    }
+}
 
-function forecast (userInput) {
+function forecast(userInput) {
     dayForecast.empty();
     rowCards.empty();
-    var fore5 = $("<h2>").attr("class", "forecast").text("5-Day Forecast: "); 
+    var fore5 = $("<h2>").attr("class", "forecast").text("5-Day Forecast: ");
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&APPID=123babda3bc150d180af748af99ad173";
     $.ajax({
         url: forecastURL,
         method: "GET"
-    }).then(function(response){
-        for (var i = 0; i < response.list.length; i += 8){
-            
+    }).then(function (response) {
+        for (var i = 0; i < response.list.length; i += 8) {
+
             forecastDate[i] = response.list[i].dt_txt;
             forecastIcon[i] = response.list[i].weather[0].icon;
-            forecastTemp[i] = response.list[i].main.temp; 
-            forecastHum[i] = response.list[i].main.humidity;  
+            forecastTemp[i] = response.list[i].main.temp;
+            forecastHum[i] = response.list[i].main.humidity;
             forecastWspd[i] = response.list[i].wind.speed;
 
             var newCol2 = $("<div>").attr("class", "col-2");
@@ -121,42 +120,41 @@ function forecast (userInput) {
             newCardBody.append(newWspd);
 
             dayForecast.append(fore5);
-            };
-            })
+        };
+    })
 
-        }
+}
 
-function storeData (userInput) {
+function storeData(userInput) {
     var userInput = $("#searchInput").val().trim().toLowerCase();
     var containsCity = false;
 
     if (citiesArray != null) {
 
-		$(citiesArray).each(function(x) {
-			if (citiesArray[x] === userInput) {
-				containsCity = true;
-			}
-		});
-	}
+        $(citiesArray).each(function (x) {
+            if (citiesArray[x] === userInput) {
+                containsCity = true;
+            }
+        });
+    }
 
-	if (containsCity === false) {
+    if (containsCity === false) {
         citiesArray.push(userInput);
-	}
+    }
 
-	localStorage.setItem("Saved City", JSON.stringify(citiesArray));
-    $panel-margin;
+    localStorage.setItem("Saved City", JSON.stringify(citiesArray));
 
 }
 
-function lastSearch () {
+function lastSearch() {
     buttonList.empty()
-    for (var i = 0; i < citiesArray.length; i ++) {
-        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary btn-lg btn-block");
+    for (var i = 0; i < citiesArray.length; i++) {
+        var newButton = $("<button>").attr("type", "button").attr("class", "savedBtn btn btn-secondary btn-lg btn-block");
         newButton.attr("data-name", citiesArray[i])
         newButton.text(citiesArray[i]);
         buttonList.prepend(newButton);
     }
-    $(".savedBtn").on("click", function(event){
+    $(".savedBtn").on("click", function (event) {
         event.preventDefault();
         var userInput = $(this).data("name");
         currentWeather(userInput);
@@ -165,12 +163,12 @@ function lastSearch () {
 
 }
 
-$(".btn").on("click", function (event){
+$(".btn").on("click", function (event) {
     event.preventDefault();
     if ($("#searchInput").val() === "") {
-    alert("Please type a valid input to know the current weather");
+        alert("Please type a valid input to know the current weather");
     } else
-    var userInput = $("#searchInput").val().trim().toLowerCase();
+        var userInput = $("#searchInput").val().trim().toLowerCase();
     currentWeather(userInput);
     forecast(userInput);
     storeData();
@@ -181,64 +179,62 @@ $(".btn").on("click", function (event){
 
 })
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '1d7f9b291dmsh56461c92c1d86b6p1072c1jsn4812d102b6f5',
-		'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
-	}
-};
+function hotels(hotelId) {
+    // hotelResults.empty();
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+            'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+        }
+    };
 
-fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000003234&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+    fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=' + hotelId + '&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.hotels[1].name)
+            console.log(data)
+            var counter = 0;
+            var i = 0;
+            while (counter < 5) {
+                if (data?.hotels[i]?.name) {
+                    var hotelDiv = $("<div>")
+                    var hotel = $("<p>").attr("class", "card-text")
+                    hotel.text(data?.hotels[i]?.name);
+                    hotelDiv.append(hotel);
+                    var starRating = $("<p>").attr("class", "card-text")
+                    starRating.text(data?.hotels[i]?.starRating);
+                    var hotelImg = $("<img>").attr("src", (data?.hotels[i]?.thumbnailUrl))
+                    hotelDiv.append(hotelImg);
+                    hotelDiv.append(starRating);
+                    hotelResults.append(hotelDiv);
 
-function hotels () {
-    $.ajax(options).then (function(response) {
-        // var hotel = response.hotels;
-        var cityName = response.cityName;
-        var hotelName = response.name;
-        var hotelStarRating = response.starRating;
-        hotelResultsText.text("name: " + hotelName + "");
-        starRatingText.text("Star rating: " + hotelStarRating + " out of 5");
+                    counter++;
+                }
+                i++;
+            }
 
+        })
 
-    }) 
 }
 
-// const options1 = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
-// 		'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=miami&search_type=ALL', options1)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-function requestId (userInput){
+function requestId(userInput) {
     const options1 = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '1d7f9b291dmsh56461c92c1d86b6p1072c1jsn4812d102b6f5',
+            'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
             'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
         }
     };
     var hotelId;
     fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=' + userInput + '&search_type=ALL', options1)
         .then(response => response.json())
-        .then(data => hotelId = data)
-        .then(() => console.log(hotelId))
-        // .then(response => console.log(response))
+        .then(data => {
+            console.log(data[0].cityID)
+            hotelId = data[0].cityID;
+            hotels(hotelId);
+        })
         .catch(err => console.error(err));
-        
-    $.ajax(hotelId).then(function(response){
-        var cityId = response.cityId;
-        console.log(cityId);
-    })
 }
- 
+
+
