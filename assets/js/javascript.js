@@ -1,7 +1,7 @@
 // global var
 var cityResultText = $("#cityResult");
 var hotelResultsText= $("#hotels");
-var starRatingText = $("starRating");
+var starRatingText = $("#starRating");
 var tempResultText = $("#tempResult");
 var humidityResult = $("#humidityResult");
 var windResultText = $("#windResult");
@@ -26,6 +26,8 @@ $(document).ready(function (){
     var userInput = citiesArray[citiesArray.length - 1];
     currentWeather(userInput);
     forecast(userInput);
+    hotels(userInput);
+    requestId(userInput);
     lastSearch ();
 
 });
@@ -173,57 +175,69 @@ $(".btn").on("click", function (event){
     storeData();
     lastSearch();
     hotels();
+    requestId(userInput);
     $("#searchInput").val("");
 
 })
 
-// $("#hotels").on("click", function(hotels){
-//     hotels.preventDefault();
-//     if ($("#searchInput").val() === "") {
-//         alert("Please type a valid input to know the current weather");
-//     } else 
-//     var userInput = $("#searchInput").val().trim().toLowerCase();
-// })
-
-
-
-
-// const settings = {
-// 	async: true,
-// 	crossDomain: true,
-// 	url: "https://booking-com.p.rapidapi.com/v1/metadata/exchange-rates?currency=AED&locale=en-gb",
-// 	method: "GET",
-// 	headers: {
-// 		XRapidAPIKey: "0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559",
-// 		XRapidAPIHost: "booking-com.p.rapidapi.com"
-// 	}
-// };
-
-// $.ajax(settings).done(function (response) {
-// 	console.log(response);
-// });
-
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+		'X-RapidAPI-Key': '1d7f9b291dmsh56461c92c1d86b6p1072c1jsn4812d102b6f5',
 		'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
 	}
 };
 
-fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000035821&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST', options)
+fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=3000003234&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST', options)
 	.then(response => response.json())
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
 
-function hotels (userInput) {
+function hotels () {
     $.ajax(options).then (function(response) {
         // var hotel = response.hotels;
+        var cityName = response.cityName;
         var hotelName = response.name;
         var hotelStarRating = response.starRating;
         hotelResultsText.text("name: " + hotelName + "");
-        hotelStarRating.text("Star rating: " + hotelStarRating + "out of 5");
+        starRatingText.text("Star rating: " + hotelStarRating + " out of 5");
 
 
     }) 
 }
+
+// const options1 = {
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+// 		'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+// 	}
+// };
+
+// fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=miami&search_type=ALL', options1)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
+
+function requestId (userInput){
+    const options1 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '1d7f9b291dmsh56461c92c1d86b6p1072c1jsn4812d102b6f5',
+            'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+        }
+    };
+    var hotelId;
+    fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=' + userInput + '&search_type=ALL', options1)
+        .then(response => response.json())
+        .then(data => hotelId = data)
+        .then(() => console.log(hotelId))
+        // .then(response => console.log(response))
+        .catch(err => console.error(err));
+        
+    $.ajax(hotelId).then(function(response){
+        var cityId = response.cityId;
+        console.log(cityId);
+    })
+}
+ 
