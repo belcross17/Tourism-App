@@ -166,6 +166,11 @@ function lastSearch() {
         currentWeather(userInput);
         forecast(userInput);
     })
+    $("#clearHistory").on("click", function(){
+        buttonList.empty();
+        localStorage.removeItem("Saved City");
+        citiesArray = JSON.parse(localStorage.getItem("Saved City")) || [];
+    })
 
 }
 
@@ -204,15 +209,15 @@ function hotels(hotelId) {
             var i = 0;
             while (counter < 5) {
                 if (data?.hotels[i]?.name) {
-                    var hotelDiv = $("<div>").attr("class", "hotels")
-                    var hotel = $("<p>").attr("class", "card-text")
+                    var hotelDiv = $("<div>").attr("class", "hotels m-1 equal-height", "p-4")
+                    var hotel = $("<p>").attr("class", "card-text m-1", "p-4")
                     hotel.text(data?.hotels[i]?.name);
                     hotelDiv.append(hotel);
-                    var starRating = $("<p>").attr("class", "card-text")
-                    starRating.text("Star Rating: " + data?.hotels[i]?.starRating + " out of 5 starts");
+                    var starRating = $("<p>").attr("class", "card-text m-1 equal-height", "p-4")
+                    starRating.text("Star Rating: "  + data?.hotels[i]?.starRating + " out of 5 stars");
                     var hotelImg = $("<img>").attr("src", (data?.hotels[i]?.thumbnailUrl))
-                    var hotelPrice = $("<p>").attr("class", "card-text");
-                    hotelPrice.text("Min Price: $" + data?.hotels[i]?.ratesSummary.minPrice + " Dollars")
+                    var hotelPrice = $("<p>").attr("class", "card-text m-1 equal-height", "p-4");
+                    hotelPrice.text("Min Price: $" + data?.hotels[i]?.ratesSummary.minPrice + " per Night")
                     hotelDiv.append(hotelImg);
                     hotelDiv.append(starRating);
                     hotelDiv.append(hotelPrice);
