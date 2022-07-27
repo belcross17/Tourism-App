@@ -19,7 +19,7 @@ var today = moment().format('MM' + "/" + 'DD' + '/' + 'YYYY');
 var APIKey = "&units=imperial&APPID=c2a625940250e9689564c95583eb14c8";
 var url = "https://api.openweathermap.org/data/2.5/weather?q=";
 var citiesArray = JSON.parse(localStorage.getItem("Saved City")) || [];
-
+// var clearHistoryBtn = document.getElementById("clearHistory");
 
 $(document).ready(function () {
     var userInput = citiesArray[citiesArray.length - 1];
@@ -160,6 +160,11 @@ function lastSearch() {
         currentWeather(userInput);
         forecast(userInput);
     })
+    $("#clearHistory").on("click", function(){
+        buttonList.empty();
+        localStorage.removeItem("Saved City");
+        citiesArray = JSON.parse(localStorage.getItem("Saved City")) || [];
+    })
 
 }
 
@@ -178,6 +183,19 @@ $(".btn").on("click", function (event) {
     $("#searchInput").val("");
 
 })
+
+// function clear(buttonList){
+//     $("#clearHistory").on("click", function(){
+//         console.log("hi");
+//         buttonList.empty();
+//         lastSearch();
+// })
+// }
+
+// function clear (buttonList){
+//     console.log("string function")
+// }
+// clearHistoryBtn.addEventListener("click", clear)
 
 function hotels(hotelId) {
     hotelResults.empty();
