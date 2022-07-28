@@ -3,18 +3,27 @@
     border: 0;
     margin: 0;
 }
+
+#image {
+    z-index: -9999;
+    position: absolute;
+    width: 100%;
+    height: 1500px;
+}
+
  /* nav section */
 #nav {
     justify-content: center;
-    background-image: linear-gradient(to right, gray, black);
+    background-color: skyblue;
 }
 
 nav a {
     font-weight: bold;
-    color: white;
-    padding: 10px;
+
+    padding: 20px;
     font-size: 28px;
     text-decoration: none;
+    align-items: center;
 }
 
 nav a:hover {
@@ -28,12 +37,18 @@ nav a:hover {
     flex-direction: column;
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+    border-color: black;
+    
 }
 
 #search-bar {
     display: flex;
     flex-direction: column;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
+    text-align: center;
+    border-color: black;
+    
 }
 
 .container-fluid {
@@ -53,6 +68,7 @@ nav a:hover {
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 10px;
+
 }
 
 .form-inline {
@@ -62,6 +78,7 @@ nav a:hover {
 
 #lastSearch {
     padding-left: 35px;
+    
     
 }
 
@@ -76,6 +93,7 @@ nav a:hover {
 
 #rowCards {
     justify-content: center;
+    margin: 10px;
 }
 
 #cardDisplay {
@@ -90,9 +108,20 @@ nav a:hover {
     border: none;
 }
  
+/* hotels section */
+
+.hotels {
+    margin: 10px;
+}
+
+
 /* footer section */
 
 footer {
     text-align: center;
     clear: both;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8066607010756ab2f4ea9e5bb84a2c6fb016a32e
