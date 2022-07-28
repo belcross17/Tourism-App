@@ -4,6 +4,7 @@
     margin: 0;
 }
 
+/* image Section */
 #image {
     z-index: -9999;
     position: absolute;
@@ -76,12 +77,14 @@ nav a:hover {
     padding-bottom: 20px;
 }
 
+/* lastSearch Section */
 #lastSearch {
     padding-left: 35px;
     
     
 }
 
+/* weather Section */
 #weatherCard {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -121,7 +124,3 @@ footer {
     text-align: center;
     clear: both;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8066607010756ab2f4ea9e5bb84a2c6fb016a32e
