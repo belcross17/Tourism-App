@@ -3,6 +3,14 @@
     border: 0;
     margin: 0;
 }
+
+#image {
+    z-index: -9999;
+    position: absolute;
+    width: 100%;
+    height: 1500px;
+}
+
  /* nav section */
 #nav {
     justify-content: center;
