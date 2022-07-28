@@ -49,6 +49,8 @@ function currentWeather(userInput) {
         var UVindexURL = "https://api.openweathermap.org/data/2.5/uvi?" + "lat=" + lat + "&" + "lon=" + lon + "&APPID=123babda3bc150d180af748af99ad173";
         var newImgMain = $("<img>").attr("class", "card-img-top").attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png");
         mainIcon.append(newImgMain);
+
+        
         cityResultText.text(cityInfo + ", " + country + " " + today);
         tempResultText.text("Temperature: " + temp + " ºF");
         humidityResult.text("Humidity: " + humidity + " %");
@@ -94,14 +96,14 @@ function forecast(userInput) {
             forecastHum[i] = response.list[i].main.humidity;
             forecastWspd[i] = response.list[i].wind.speed;
 
-            var newCol2 = $("<div>").attr("class", "col-2");
+            var newCol2 = $("<div>").attr("class", "mx-3");
             rowCards.append(newCol2);
 
-            var newDivCard = $("<div>").attr("class", "card text-white bg-primary mb-3");
+            var newDivCard = $("<div>").attr("class", "card text-white mb-3 has-text-centered is-grouped mx-10");
             newDivCard.attr("style", "max-width: 18rem;")
             newCol2.append(newDivCard);
 
-            var newCardBody = $("<div>").attr("class", "card-body");
+            var newCardBody = $("<div>").attr("class", "p-2", "card-body");
             newDivCard.append(newCardBody);
 
             var newH5 = $("<h5>").attr("class", "card-title").text(moment(forecastDate[i]).format("MMM Do"));
@@ -149,7 +151,7 @@ function storeData(userInput) {
 function lastSearch() {
     buttonList.empty()
     for (var i = 0; i < citiesArray.length; i++) {
-        var newButton = $("<button>").attr("type", "button").attr("class", "savedBtn btn btn-secondary btn-lg btn-block");
+        var newButton = $("<button>").attr("type", "button").attr("class","savedBtn btn btn-secondary button is-active button is-info is-rounded is-outlined has-background-link-light is-fullwidth my-1");
         newButton.attr("data-name", citiesArray[i])
         newButton.text(citiesArray[i]);
         buttonList.prepend(newButton);
@@ -184,6 +186,66 @@ $(".btn").on("click", function (event) {
 
 })
 
+function hotels(hotelId) {
+    hotelResults.empty();
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+            'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/search?sort_order=HDR&location_id=' + hotelId + '&date_checkout=2022-11-16&date_checkin=2022-11-15&star_rating_ids=3.0%2C3.5%2C4.0%2C4.5%2C5.0&rooms_number=1&amenities_ids=FINTRNT%2CFBRKFST', options)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.hotels[1].name)
+            console.log(data)
+            var counter = 0;
+            var i = 0;
+            while (counter < 5) {
+                if (data?.hotels[i]?.name) {
+                    var hotelDiv = $("<div>").attr("class", "hotels m-1 equal-height", "p-4")
+                    var hotel = $("<p>").attr("class", "card-text m-1", "p-4")
+                    hotel.text(data?.hotels[i]?.name);
+                    hotelDiv.append(hotel);
+                    var starRating = $("<p>").attr("class", "card-text m-1 equal-height", "p-4")
+                    starRating.text("Star Rating: "  + data?.hotels[i]?.starRating + " out of 5 stars");
+                    var hotelImg = $("<img>").attr("src", (data?.hotels[i]?.thumbnailUrl))
+                    var hotelPrice = $("<p>").attr("class", "card-text m-1 equal-height", "p-4");
+                    hotelPrice.text("Min Price: $" + data?.hotels[i]?.ratesSummary.minPrice + " per Night")
+                    hotelDiv.append(hotelImg);
+                    hotelDiv.append(starRating);
+                    hotelDiv.append(hotelPrice);
+                    hotelResults.append(hotelDiv);
+
+                    counter++;
+                }
+                i++;
+            }
+
+        })
+
+}
+
+function requestId(userInput) {
+    const options1 = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '0b014ef4a7msh20044d57c266fadp11ce28jsn558d2ceb2559',
+            'X-RapidAPI-Host': 'priceline-com-provider.p.rapidapi.com'
+        }
+    };
+    var hotelId;
+    fetch('https://priceline-com-provider.p.rapidapi.com/v1/hotels/locations?name=' + userInput + '&search_type=ALL', options1)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data[0].cityID)
+            hotelId = data[0].cityID;
+            hotels(hotelId);
+        })
+        .catch(err => console.error(err));
+}
 
 function hotels(hotelId) {
     hotelResults.empty();
@@ -245,5 +307,3 @@ function requestId(userInput) {
         })
         .catch(err => console.error(err));
 }
-
-

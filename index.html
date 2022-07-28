@@ -20,6 +20,7 @@
     <div class="container">
         <div class="notification is-white">
             <!-- Search box -->
+            
             <div class="column has-background-link-light">
                 <div class="row search" id="row1">
                     Search For a City and Enter Desired Dates:
@@ -30,37 +31,48 @@
                             <label class="title is-6" for="search">Location:</label>
                         <input class="container has-text-centered has-background-link-light" type="search" placeholder="Enter City Here" id="searchInput">
                         <label class="title is-6" for="start">Start date:</label>
+
                         <input class="has-background-link-light" type="date" id="start" name="trip-start"
-                               value="2022-07-28"
-                               min="2022-07-28" max="2022-12-31">
+                               value="2020-07-22"
+                               min="2022-01-01" max="2022-12-31">
                                <label class="title is-6" for="end">End date:</label>
                         <input class="has-background-link-light" type="date" id="end" name="trip-end"
-                               value="2022-07-28"
-                               min="2021-07-28" max="2022-12-31">
-                        <button class="btn button is-info is-active" type="submit" name="clearBtn"><i>Search</i></button>
+                               value="2020-07-22"
+                               min="2021-01-01" max="2022-12-31">
+                        <button class="btn button is-info is-active" type="submit" id="searchInput"><i>Search</i></button>
                     </div>
            <!-- Previous searches sections -->
                     </form>
                     <div class="columns">
                 <div class="column is-half" id="lastSearch">
                     <label class="title is-6">Previous Searches:</label>
+            
+
                     <div class="box" style="width: 25rem; border: none;" id="buttonsList">
+                        
+                  
+                    
                     </div>
-                    <button class="button is-info is-active" type="button" id="clearHistory"><i>Clear History</i></button>
+                    <button class="button is-info is-active" type="reset" id="clearHistory"><i>Clear History</i></button>
                     </div>
+                    
                     <div class="column is-half" style="width: 30rem" id="allWeather">
                         <label class="title is-6">Current Weather:</label>
                         <div class="field" id="weatherCard">
                             <div class="card" style="width: 98%;" id="cardDisplay">
+                            
                                 <div class="field is-horizontal">
+        
                                     <div class="field is-horizontal">
                                         <div class="field" id="card">
-                                          <h2 class="title is-6" id="cityResult"></h2>
-                                          <p class="text" id="tempResult"></p>
-                                          <p class="text" id="humidityResult"></p>
-                                          <p class="text" id="windResult"></p>
-                                          <p class="text" id="UVIndexResult"></p>
+                                          <h2 class="title is-6 pl-2 pt-3" id="cityResult"></h2>
+                                          <p class="text pl-2" id="tempResult"></p>
+                                          <p class="text pl-2" id="humidityResult"></p>
+                                          <p class="text pl-2" id="windResult"></p>
+                                          <p class="text pl-2" id="UVIndexResult"></p>
+                                   
                                         </div>
+            
                                     </div>
                                     <div class="card-image" id="mainIcon">
                                         <!-- Main Icon -->
@@ -70,27 +82,55 @@
                         </div>
                 </div>
             </div>
+               
+            
+
             <!-- Weather Card for todays weather-->
+            
+
+
                 <!-- 5 Day Forecast -->
-                <div class="field has-text-centered" id="row5day"></div>
-                <div class="field is-horizontal mb-3" id="rowCards">
+                <div class="field has-text-centered mb-3 mx-10" id="row5day"></div>
+
+                <div class="field is-horizontal mb-3 mx-10" id="rowCards">
                     <!-- Cards Goes Here -->
                 </div>
             </div>
+       
+    
+
 <!--  Hotel section  -->
+
 <div class="container has-text-centered">
-    <label class="title is-6">Hotels:</label>
+    
+    <label class="title is-6">Hotels</label>
     <div class="field is-horizontal">
-       <div id="hotels">
+
+       <div class="card field is-horizontal "id="hotels">
+
+
+
        </div>
+
+
+
     </div>
+
+
+
+
+
+
 </div>
 </div>
 </div>
+
 <!--  Footer  -->
+
     <footer>
       <div class="container">
-        <h5 class="has-background-link-light mb-5" id="CopyR">&copy; Tourism-App</h5>
+   
+        <h5 class="has-background-link-light m-5 p-2" id="CopyR">&copy; Tourism-App</h5>
     </div>
 </div>
  </div>

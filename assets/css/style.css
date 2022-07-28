@@ -74,10 +74,6 @@ nav a:hover {
     
 }
 
-.buttonsList{
-
-    padding-left: 35px;
-}
 
 #weatherCard {
     padding-top: 20px;
@@ -90,6 +86,7 @@ nav a:hover {
 
 #rowCards {
     justify-content: center;
+    margin: 10px;
 }
 
 #cardDisplay {
@@ -121,3 +118,4 @@ footer {
     text-align: center;
     clear: both;
 }
+
